@@ -5,12 +5,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --background-transparent: #ffffffaf;
+
+  --max-width: 500px;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #e0e0e0;
+    --background-transparent: #0a0a0aa2;
   }
 }
 
@@ -18,16 +22,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: 'Archivo', sans-serif;
-}
-
-.menu-bar,
-.menu-overlay-bar {
-  @apply fixed top-0 left-0 w-screen p-8 flex justify-between items-center z-[1];
+  font-size: 15px;
 }
 
 @layer utilities {
   .clip-path-menu {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
   }
   .clip-path-menu-item {
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
