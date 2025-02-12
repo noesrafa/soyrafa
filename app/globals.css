@@ -19,3 +19,17 @@ body {
   background: var(--background);
   font-family: 'Archivo', sans-serif;
 }
+
+.menu-bar,
+.menu-overlay-bar {
+  @apply fixed top-0 left-0 w-screen p-8 flex justify-between items-center z-[1];
+}
+
+@layer utilities {
+  .clip-path-menu {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%);
+  }
+  .clip-path-menu-item {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+}
