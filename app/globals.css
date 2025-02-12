@@ -6,7 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --background-transparent: #ffffffaf;
-
+  --foreground-transparent: #17171711;
   --max-width: 500px;
 }
 
@@ -15,6 +15,7 @@
     --background: #0a0a0a;
     --foreground: #e0e0e0;
     --background-transparent: #0a0a0aa2;
+    --foreground-transparent: #e0e0e015;
   }
 }
 
