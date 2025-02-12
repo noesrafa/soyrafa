@@ -6,10 +6,10 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const menuLinks = [
-  { path: "/", label: "Home" },
-  { path: "/work", label: "Work" },
-  { path: "/lab", label: "Lab" },
-  { path: "/blog", label: "Blog" },
+  { path: "/", label: "HOME" },
+  { path: "/work", label: "WORK" },
+  { path: "/lab", label: "LAB" },
+  { path: "/blog", label: "BLOG" },
 ];
 
 const Menu = () => {
@@ -31,6 +31,7 @@ const Menu = () => {
         .to(".menu-overlay", {
           duration: 0.4,
           opacity: 1,
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           ease: "power4.out",
         })
         .to(".menu-link-item-holder", {
@@ -58,15 +59,15 @@ const Menu = () => {
         <div className="w-full max-w-[var(--max-width)] mx-auto flex justify-between items-center">
           <div>
             <a href="/" className="hover:underline p-1">Linkedin</a>,
-            <a href="/" className="hover:underline p-1">Twitter</a>
+            <a href="/" className="hover:underline p-1">Email</a>
           </div>
-          <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2 rounded-full hover:bg-[var(--foreground-transparent)]">
-            Menu
+          <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2">
+            [Menu]
           </button>
         </div>
       </div>
 
-      <div className="menu-overlay fixed top-0 left-0 w-[100vw] h-[100dvh] p-2 bg-[var(--background-transparent)] backdrop-blur-lg z-[2] flex">
+      <div className="menu-overlay fixed top-0 left-0 w-[100vw] h-[100dvh] p-2 bg-[var(--background-transparent)] backdrop-blur-lg z-[2] flex clip-path-menu">
         <div className="w-full max-w-[var(--max-width)] mx-auto flex flex-col justify-between">
           <div></div>
           <div className="flex flex-col">
@@ -91,7 +92,7 @@ const Menu = () => {
             <div>
 
             </div>
-            <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2 rounded-full hover:bg-[var(--foreground-transparent)]">
+            <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2">
               Cerrar
             </button>
           </div>

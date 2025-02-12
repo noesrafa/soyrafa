@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="p-3 leading-[1.4] max-w-[var(--max-width)] mx-auto opacity-90 font-medium min-h-[100dvh] flex flex-col justify-between">
@@ -34,6 +36,7 @@ export default function Home() {
       </div>
 
       <div></div>
+      
     </div>
   );
 }
