@@ -11,6 +11,9 @@ const archivo = Archivo({
 export const metadata: Metadata = {
   title: "Rafael Alexander",
   description: "Rafael Alexander - Full Stack Product Engineer",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

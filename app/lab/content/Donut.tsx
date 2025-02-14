@@ -23,8 +23,8 @@ const AsciiDonut = () => {
       const height = 200;
 
       // A rota, B se queda en Math.PI/2 para girar 90 grados
-      const B = -(angleA.current += 0.00005) % 3.01 * Math.PI;
-      const A = (Math.PI / 1.12) * -1; // 90 grados de rotación en el eje vertical
+      const B = -(angleA.current += 0.000001) % 3 * Math.PI;
+      const A = (Math.PI / (angleA.current += 0.00004)) * -1; // 90 grados de rotación en el eje vertical
 
       // Calculamos cos y sin para A y B
       const cosA = Math.cos(A);
@@ -38,11 +38,11 @@ const AsciiDonut = () => {
       const zBuffer = new Array(width * height).fill(0);
 
       // Recorremos el toroide
-      for (let theta = 0; theta < 2 * Math.PI; theta += 0.05) {
+      for (let theta = 0; theta < 2 * Math.PI; theta += 0.5) {
         const cosTheta = Math.cos(theta);
         const sinTheta = Math.sin(theta);
 
-        for (let phi = 0; phi < 3 * Math.PI; phi += .0004) {
+        for (let phi = 0; phi < 3 * Math.PI; phi += .01) {
           const cosPhi = Math.cos(phi);
           const sinPhi = Math.sin(phi);
 
