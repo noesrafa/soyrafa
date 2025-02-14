@@ -61,7 +61,7 @@ const Menu = () => {
             <a href="/" className="hover:underline p-1">Linkedin</a>,
             <a href="/" className="hover:underline p-1">Email</a>
           </div>
-          <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2">
+          <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2 bg-[var(--background)]">
             [Menu]
           </button>
         </div>

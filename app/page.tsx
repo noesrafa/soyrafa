@@ -1,14 +1,16 @@
 import Image from "next/image";
+import AsciiDonut from "./lab/content/Donut";
 
 export default function Home() {
   return (
     <div className="p-3 leading-[1.4] max-w-[var(--max-width)] mx-auto opacity-90 font-medium min-h-[100dvh] flex flex-col justify-between">
+      <AsciiDonut />
       <div>
         <h1>
           Rafael Alexander, <i>Full Stack Product Engineer</i>, AI
         </h1>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-left gap-4">
         <p>
           {" "}
           Un nuevo día comienza con energía.{" "}
@@ -36,7 +38,6 @@ export default function Home() {
       </div>
 
       <div></div>
-      
     </div>
   );
 }
