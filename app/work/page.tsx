@@ -1,9 +1,9 @@
 import React from 'react'
 
-const WorkPage = () => {
+const Work = () => {
   return (
-    <div>WorkPage</div>
+    <div>Work</div>
   )
 }
 
-export default WorkPage;
+export default Work

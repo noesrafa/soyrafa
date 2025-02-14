@@ -5,26 +5,38 @@ import React, { useState, useEffect, useRef } from "react";
 const AsciiDonut = () => {
   const [output, setOutput] = useState("");
   const angleA = useRef(0);
+  const scrollPosition = useRef(0);
 
   const animationFrameId = useRef(null);
 
   useEffect(() => {
-    // Inicializa el ángulo A
+    // Manejador del evento scroll
+    const handleScroll = () => {
+      const maxScroll =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const currentScroll = window.scrollY;
+      // Normalizar el scroll entre 0 y 1
+      scrollPosition.current = currentScroll / maxScroll;
+    };
+
+    // Agregar event listener
+    window.addEventListener("scroll", handleScroll);
     angleA.current = -10;
 
     const animate = () => {
-      const R1 = 0.001;
-      const R2 = 2;
-      const K2 = 6;
-      const K1 = 200;
+      const R1 = 0.005 + scrollPosition.current * 2;
+      const R2 = 2 - scrollPosition.current * 2;
+      console.log(R1 * 100000, R2);
+      const K2 = 6 + scrollPosition.current * 10;
+      const K1 = 200 + scrollPosition.current * 10;
 
       const gradient = ".+az".split("");
       const width = 150;
       const height = 200;
 
       // A rota, B se queda en Math.PI/2 para girar 90 grados
-      const B = -(angleA.current += 0.000001) % 3 * Math.PI;
-      const A = (Math.PI / (angleA.current += 0.00004)) * -1; // 90 grados de rotación en el eje vertical
+      const B = (-(angleA.current += 0.00005) % 3) * Math.PI;
+      const A = 0.36 + scrollPosition.current * 2 * Math.PI;
 
       // Calculamos cos y sin para A y B
       const cosA = Math.cos(A);
@@ -42,7 +54,7 @@ const AsciiDonut = () => {
         const cosTheta = Math.cos(theta);
         const sinTheta = Math.sin(theta);
 
-        for (let phi = 0; phi < 3 * Math.PI; phi += .01) {
+        for (let phi = 0; phi < 3 * Math.PI; phi += 0.01) {
           const cosPhi = Math.cos(phi);
           const sinPhi = Math.sin(phi);
 
@@ -98,12 +110,19 @@ const AsciiDonut = () => {
     // Iniciar la animación
     animationFrameId.current = requestAnimationFrame(animate);
 
-    // Limpiar la animación al desmontar
-    return () => cancelAnimationFrame(animationFrameId.current);
+    // Limpiar event listeners y animación
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      cancelAnimationFrame(animationFrameId.current);
+    };
   }, []);
 
   return (
-    <pre className="pointer-events-none font-mono text-[.11em] md:text-[.15em] text-center m-0 fixed -top-[100px] md:-top-[120px] left-0 w-[100dvw] h-[100dvh] scale-[5] opacity-20 flex items-center justify-center">
+    <pre
+      className={`pointer-events-none font-mono text-[.11em] md:text-[.15em] text-center m-0 fixed -top-[100px] md:-top-[120px] left-0 w-[100dvw] h-[100dvh] scale-[5] opacity-20 flex items-center justify-center transition duration-300 ${
+        scrollPosition.current > 0.2 ? "scale-[10] opacity-10" : ""
+      }`}
+    >
       {output}
     </pre>
   );

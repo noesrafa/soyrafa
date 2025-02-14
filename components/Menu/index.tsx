@@ -4,12 +4,12 @@ import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-
+import { usePathname } from "next/navigation";
 const menuLinks = [
-  { path: "/", label: "HOME" },
-  { path: "/work", label: "WORK" },
-  { path: "/lab", label: "LAB" },
-  { path: "/blog", label: "BLOG" },
+  { path: "/", label: "home" },
+  { path: "/work", label: "work" },
+  { path: "/lab", label: "lab" },
+  { path: "/blog", label: "blog" },
 ];
 
 const Menu = () => {
@@ -75,25 +75,29 @@ const Menu = () => {
         </div>
       </div>
 
-      <div className="menu-overlay fixed top-0 left-0 w-[100vw] h-[100dvh] p-2 bg-[var(--background-transparent)] backdrop-blur-lg z-[2] flex clip-path-menu">
+      <div className="menu-overlay fixed top-0 left-0 w-[100vw] h-[100dvh] p-2 bg-[var(--background)] backdrop-blur-lg z-[2] flex clip-path-menu">
         <div className="w-full max-w-[var(--max-width)] mx-auto flex flex-col justify-between">
           <div></div>
-          <div className="flex flex-col">
-            {menuLinks.map((link, index) => (
-              <div key={index} className="clip-path-menu-item">
-                <div
-                  className="relative menu-link-item-holder"
-                  onClick={toggleMenu}
-                >
-                  <Link
-                    className="text-[80px] font-medium leading-[90px] hover:opacity-100 opacity-80 w-full"
-                    href={link.path}
+          <div className="flex flex-col gap-6">
+            {menuLinks.map((link, index) => {
+              const isActive = usePathname() === link.path;
+              console.log(usePathname(), link.path, isActive);
+              return (
+                <div key={index} className="clip-path-menu-item">
+                  <div
+                    className="relative menu-link-item-holder"
+                    onClick={toggleMenu}
                   >
-                    {link.label}
-                  </Link>
+                    <Link
+                      className="text-[50px] font-[300] leading-[50px] hover:opacity-100 opacity-80 w-full"
+                      href={link.path}
+                    >
+                      {isActive ? "[*]" : "[ ]"} {link.label} 
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="flex justify-between items-center">
