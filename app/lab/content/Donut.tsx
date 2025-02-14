@@ -10,21 +10,21 @@ const AsciiDonut = () => {
 
   useEffect(() => {
     // Inicializa el ángulo A
-    angleA.current = 0;
+    angleA.current = -10;
 
     const animate = () => {
-      const R1 = 0.6;
-      const R2 = 1.7;
-      const K2 = 7;
-      const K1 = 300;
+      const R1 = 0.001;
+      const R2 = 2;
+      const K2 = 6;
+      const K1 = 200;
 
-      const gradient = "_.~;|#@".split("");
-      const width = 250;
-      const height = 90;
+      const gradient = ".+az".split("");
+      const width = 150;
+      const height = 200;
 
       // A rota, B se queda en Math.PI/2 para girar 90 grados
-      const B = -(angleA.current += 0.0005) % 2.4 * Math.PI;
-      const A = Math.PI / 1.3; // 90 grados de rotación en el eje vertical
+      const B = -(angleA.current += 0.00005) % 3.01 * Math.PI;
+      const A = (Math.PI / 1.12) * -1; // 90 grados de rotación en el eje vertical
 
       // Calculamos cos y sin para A y B
       const cosA = Math.cos(A);
@@ -103,7 +103,7 @@ const AsciiDonut = () => {
   }, []);
 
   return (
-    <pre className="font-mono leading-[6px] text-[10px] md:text-[3px] text-center m-0 fixed top-0 left-0 w-[100dvw] h-[100dvh] scale-x-[1.5] scale-y-[2] md:scale-x-[6] md:scale-y-[4] opacity-20 flex items-center justify-center -translate-y-20">
+    <pre className="font-mono text-[.11em] md:text-[.15em] text-center m-0 fixed -top-[100px] md:-top-[120px] left-0 w-[100dvw] h-[100dvh] scale-[5] opacity-20 flex items-center justify-center">
       {output}
     </pre>
   );
