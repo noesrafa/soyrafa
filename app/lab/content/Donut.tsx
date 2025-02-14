@@ -103,7 +103,7 @@ const AsciiDonut = () => {
   }, []);
 
   return (
-    <pre className="font-mono text-[.11em] md:text-[.15em] text-center m-0 fixed -top-[100px] md:-top-[120px] left-0 w-[100dvw] h-[100dvh] scale-[5] opacity-20 flex items-center justify-center">
+    <pre className="pointer-events-none font-mono text-[.11em] md:text-[.15em] text-center m-0 fixed -top-[100px] md:-top-[120px] left-0 w-[100dvw] h-[100dvh] scale-[5] opacity-20 flex items-center justify-center">
       {output}
     </pre>
   );

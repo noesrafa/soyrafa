@@ -18,14 +18,13 @@ const Life = () => {
       </div>
       <div className="grid grid-cols-[repeat(26,1fr)] gap-[11px] md:gap-[15px] max-w-[var(--max-width)]">
         {Array.from({ length: totalWeeks }).map((_, index) => (
-          <div
-            key={index}
-            className={`w-full aspect-square rounded-full ${
-              index < weeksLived
-                ? "bg-[var(--foreground)]"
-                : "bg-[var(--foreground)] opacity-10"
-            }`}
-          />
+          <div key={index} className="w-[0px] text-xs">
+            {index < weeksLived ? (
+              <p className="font-bold">x</p>
+            ) : (
+              <p className="opacity-50">o</p>
+            )}
+          </div>
         ))}
       </div>
     </div>

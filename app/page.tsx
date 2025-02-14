@@ -10,7 +10,7 @@ export default function Home() {
           Rafael Alexander, <i>Full Stack Product Engineer</i>, AI
         </h1>
       </div>
-      <div className="flex flex-col items-left gap-4">
+      <div className="flex flex-col items-left gap-4 pb-10">
         <p>
           {" "}
           Un nuevo día comienza con energía.{" "}
@@ -23,9 +23,7 @@ export default function Home() {
           Me estiro, respiro profundo y sonrío.{" "}
           <span className="italic">Hoy es un buen día.</span> Los pies
           encuentran el suelo con firmeza y el agua fresca en el rostro despeja
-          cualquier rastro de sueño. Hay algo especial en la rutina cuando se
-          disfruta cada momento, cuando se aprecia cada detalle, desde el aroma
-          del café recién hecho{" "}
+          cualquier rastro de sueño.{" "}
           <span className="italic">hasta la primera idea brillante</span> que
           cruza la mente.
         </p>

@@ -58,10 +58,18 @@ const Menu = () => {
       <div className="fixed bottom-0 left-0 w-screen p-2 z-[1]">
         <div className="w-full max-w-[var(--max-width)] mx-auto flex justify-between items-center">
           <div>
-            <a href="/" className="hover:underline p-1">Linkedin</a>,
-            <a href="/" className="hover:underline p-1">Email</a>
+            <a href="/" className="hover:underline p-1 bg-[var(--background)]">
+              Linkedin
+            </a>
+            ,
+            <a href="/" className="hover:underline p-1 bg-[var(--background)]">
+              Email
+            </a>
           </div>
-          <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2 bg-[var(--background)]">
+          <button
+            onClick={toggleMenu}
+            className="pointer hover:underline p-1 bg-[var(--background)]"
+          >
             [Menu]
           </button>
         </div>
@@ -89,10 +97,11 @@ const Menu = () => {
           </div>
 
           <div className="flex justify-between items-center">
-            <div>
-
-            </div>
-            <button onClick={toggleMenu} className="pointer hover:underline py-1 px-2">
+            <div></div>
+            <button
+              onClick={toggleMenu}
+              className="pointer hover:underline py-1 px-2"
+            >
               Cerrar
             </button>
           </div>
