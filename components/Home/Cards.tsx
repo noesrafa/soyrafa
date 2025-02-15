@@ -11,32 +11,42 @@ import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Card = forwardRef(({ id, frontSrc, frontAlt, backText }, ref) => {
-  return (
-    <div className="card" id={id} ref={ref}>
-      <div className="card-wrapper">
-        <div className="flip-card-inner">
-          <div className="flip-card-front">
-            <Image
-              priority
-              src={frontSrc}
-              width={500}
-              height={500}
-              alt={frontAlt}
-            />
-          </div>
-          <div className="flip-card-back">
-            <p>{backText}</p>
+const Card = forwardRef(
+  (
+    {
+      id,
+      frontSrc,
+      frontAlt,
+      backText,
+    }: { id: string; frontSrc: string; frontAlt: string; backText: string },
+    ref: React.Ref<HTMLDivElement>
+  ) => {
+    return (
+      <div className="card" id={id} ref={ref}>
+        <div className="card-wrapper">
+          <div className="flip-card-inner">
+            <div className="flip-card-front">
+              <Image
+                priority
+                src={frontSrc}
+                width={500}
+                height={500}
+                alt={frontAlt}
+              />
+            </div>
+            <div className="flip-card-back">
+              <p>{backText}</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-});
+    );
+  }
+);
 
 export default function Home() {
-  const container = useRef(null);
-  const cardRefs = useRef([]);
+  const container = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<HTMLDivElement[]>([]);
 
   useGSAP(
     () => {
@@ -47,7 +57,7 @@ export default function Home() {
 
       // pin cards section
       ScrollTrigger.create({
-        trigger: container.current.querySelector(".cards"),
+        trigger: container.current?.querySelector(".cards"),
         start: "top top",
         end: () => `+=${totalScrollHeight}`,
         pin: true,
@@ -61,7 +71,7 @@ export default function Home() {
           rotation: `${rotations[index]}`,
           ease: "none",
           scrollTrigger: {
-            trigger: container.current.querySelector(".cards"),
+            trigger: container.current?.querySelector(".cards"),
             start: "top top",
             end: () => `+=${window.innerHeight}`,
             scrub: 0.5,
@@ -80,7 +90,7 @@ export default function Home() {
         const endOffset = 2 / 3 + staggerOffset;
 
         ScrollTrigger.create({
-          trigger: container.current.querySelector(".cards"),
+          trigger: container.current?.querySelector(".cards"),
           start: "top top",
           end: () => `+=${totalScrollHeight}`,
           scrub: 1,
@@ -127,7 +137,11 @@ export default function Home() {
                 frontSrc="/card-front.png"
                 frontAlt="Card Image"
                 backText="Your card details appear here"
-                ref={(el) => (cardRefs.current[index] = el)}
+                ref={(el) => {
+                  if (el) {
+                    cardRefs.current[index] = el;
+                  }
+                }}
               />
             ))}
           </section>
