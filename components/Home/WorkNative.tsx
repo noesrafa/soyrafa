@@ -45,7 +45,7 @@ export default function Work() {
       });
 
       // Animar texto y botón
-      const triggerPosition = 10000;
+      const triggerPosition = windowHeight * 0.25;
       const mainElement = mainRef.current;
       if (mainElement) {
         const mainRect = mainElement.getBoundingClientRect();
@@ -80,15 +80,10 @@ export default function Work() {
           key={i}
         >
           <div className="card card-left relative w-[40%] h-[360px] rounded-lg overflow-hidden will-change-transform">
-            <img
-              src={`/img-${2 * i - 1}.jpg`}
-              alt=""
-              width={100}
-              height={100}
-            />
+            <div className="w-full h-full bg-red-500"></div>
           </div>
           <div className="card card-right relative w-[40%] h-[360px] rounded-lg overflow-hidden will-change-transform">
-            <img src={`/img-${2 * i}.jpg`} alt="" width={100} height={100} />
+            <div className="w-full h-full bg-red-500"></div>
           </div>
         </div>
       );
