@@ -1,6 +1,7 @@
 import Image from "next/image";
 import AsciiDonut from "./lab/content/Donut";
 import Work from "@/components/Home/Work";
+import WorkNative from "@/components/Home/WorkNative";
 
 export default function Home() {
   return (
@@ -37,7 +38,7 @@ export default function Home() {
 
         <div></div>
       </div>
-      <Work />
+      <WorkNative />
     </div>
   );
 }
