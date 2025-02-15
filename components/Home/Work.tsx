@@ -9,10 +9,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Work() {
   useEffect(() => {
-    const scrollTriggerSettings = {
+    const scrollTriggerSettingsText = {
       trigger: ".main",
-      start: "top 25%",
+      start: "top 50%",
+      end: "bottom bottom",
       toggleActions: "play reverse play reverse",
+      markers: true,
     };
 
     const leftXValues = [-800, -900, -400];
@@ -29,7 +31,7 @@ export default function Work() {
         x: leftXValues[index],
         scrollTrigger: {
           trigger: ".main",
-          start: "top center",
+          start: "top bottom",
           end: "150% bottom",
           scrub: true,
           onUpdate: (self) => {
@@ -53,7 +55,7 @@ export default function Work() {
       scale: 1,
       duration: 0.5,
       ease: "power1.out",
-      scrollTrigger: scrollTriggerSettings,
+      scrollTrigger: scrollTriggerSettingsText,
     });
 
     gsap.to(".line p", {
@@ -61,7 +63,7 @@ export default function Work() {
       duration: 0.5,
       ease: "power1.out",
       stagger: 0.1,
-      scrollTrigger: scrollTriggerSettings,
+      scrollTrigger: scrollTriggerSettingsText,
     });
 
     gsap.to("button", {
@@ -70,7 +72,7 @@ export default function Work() {
       duration: 0.5,
       ease: "power1.out",
       delay: 0.25,
-      scrollTrigger: scrollTriggerSettings,
+      scrollTrigger: scrollTriggerSettingsText,
     });
 
     return () => {
@@ -87,15 +89,10 @@ export default function Work() {
           key={i}
         >
           <div className="card card-left relative w-[40%] h-[360px] rounded-lg overflow-hidden will-change-transform">
-            <img
-              src={`/img-${2 * i - 1}.jpg`}
-              alt=""
-              width={100}
-              height={100}
-            />
+            <div className="w-full h-full bg-red-500"></div>
           </div>
           <div className="card card-right relative w-[40%] h-[360px] rounded-lg overflow-hidden will-change-transform">
-            <img src={`/img-${2 * i}.jpg`} alt="" width={100} height={100} />
+            <div className="w-full h-full bg-red-500"></div>
           </div>
         </div>
       );
@@ -104,7 +101,7 @@ export default function Work() {
   };
 
   return (
-    <ReactLenis root>
+    <div>
       <section className="main font-light w-screen relative h-[150vh] flex flex-col justify-center items-center overflow-hidden">
         <div className="absolute top-[45%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
           <div className="copy my-4 flex flex-col justify-center items-center">
@@ -132,6 +129,6 @@ export default function Work() {
 
         {generateRows()}
       </section>
-    </ReactLenis>
+    </div>
   );
 }
