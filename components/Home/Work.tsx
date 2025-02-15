@@ -4,7 +4,7 @@ import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ReactLenis } from "lenis/react";
-
+import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Work() {
@@ -14,7 +14,6 @@ export default function Work() {
       start: "top 50%",
       end: "bottom bottom",
       toggleActions: "play reverse play reverse",
-      markers: true,
     };
 
     const leftXValues = [-800, -900, -400];
@@ -89,10 +88,20 @@ export default function Work() {
           key={i}
         >
           <div className="card card-left relative w-[40%] h-[360px] rounded-lg overflow-hidden will-change-transform">
-            <div className="w-full h-full bg-red-500"></div>
+            <Image
+              src={`/bg-${2 * i - 1}.webp`}
+              alt=""
+              width={399}
+              height={399}
+            />
           </div>
           <div className="card card-right relative w-[40%] h-[360px] rounded-lg overflow-hidden will-change-transform">
-            <div className="w-full h-full bg-red-500"></div>
+            <Image
+              src={`/bg-${2 * i}.webp`}
+              alt=""
+              width={399}
+              height={399}
+            />
           </div>
         </div>
       );
@@ -101,7 +110,7 @@ export default function Work() {
   };
 
   return (
-    <div>
+    <ReactLenis root>
       <section className="main font-light w-screen relative h-[150vh] flex flex-col justify-center items-center overflow-hidden">
         <div className="absolute top-[45%] left-[50%] transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4">
           <div className="copy my-4 flex flex-col justify-center items-center">
@@ -129,6 +138,6 @@ export default function Work() {
 
         {generateRows()}
       </section>
-    </div>
+    </ReactLenis>
   );
 }
