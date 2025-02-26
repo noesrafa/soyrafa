@@ -3,7 +3,7 @@ import AsciiDonut from "./lab/content/Donut";
 import Work from "@/components/Home/Work";
 import WorkNative from "@/components/Home/WorkNative";
 import Cards from "@/components/Home/Cards";
-
+import Article from "@/components/Home/Article";
 export default function Home() {
   return (
     <div className="leading-[1.4]  opacity-90 font-medium min-h-[100dvh]">
@@ -40,6 +40,7 @@ export default function Home() {
         <div></div>
       </div>
       <Cards />
+      <Article />
     </div>
   );
 }

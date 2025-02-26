@@ -12,7 +12,18 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            'h1, h2, h3, h4, h5, h6': {
+              color: 'var(--foreground)',
+            },
+          },
+        },
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 } satisfies Config;

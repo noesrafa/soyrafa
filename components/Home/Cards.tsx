@@ -35,7 +35,7 @@ const Card = forwardRef(
               />
             </div>
             <div className="flip-card-back">
-              <p>{backText}</p>
+              <p>Front End Developer</p>
             </div>
           </div>
         </div>
