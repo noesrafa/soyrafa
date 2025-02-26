@@ -3,6 +3,7 @@ title: "Cómo funciona el Machine Learning"
 date: "2023-07-15"
 category: "Machine Learning"
 description: "Una exploración detallada de los Modelos de Lenguaje de Gran Escala (LLMs), su funcionamiento, aplicaciones y el impacto que están teniendo en diversas industrias."
+image: "/images/blog/header.jpg"
 ---
 
 # Cómo funciona el Machine Learning?

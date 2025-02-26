@@ -21,6 +21,7 @@ export async function GET(request: Request) {
       date: data.date,
       category: data.category,
       description: data.description,
+      image: data.image || null,
     };
   });
 

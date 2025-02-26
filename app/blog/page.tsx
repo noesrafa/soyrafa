@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Breadcrumb from '@/components/Blog/Breadcrumb';
 import SearchBar from '@/components/Blog/SearchBar';
 import CategorySelector from '@/components/Blog/CategorySelector';
+import Image from 'next/image';
 
 interface Post {
   slug: string;
@@ -12,6 +13,7 @@ interface Post {
   date: string;
   category: string;
   description: string;
+  image: string;
 }
 
 const BlogPage = () => {
@@ -62,6 +64,17 @@ const BlogPage = () => {
             key={post.slug}
             className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
           >
+            {post.image && (
+              <div className="relative w-full h-48">
+                <Image
+                  src={post.image}
+                  alt={post.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            )}
             <div className="p-6">
               <div className="flex items-center text-sm text-gray-500 mb-2">
                 <span>{new Date(post.date).toLocaleDateString()}</span>

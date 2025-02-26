@@ -3,6 +3,7 @@ title: "Cómo funcionan los Modelos de Lenguaje de Gran Escala (LLMs)"
 date: "2023-07-15"
 category: "Inteligencia Artificial"
 description: "Una exploración detallada de los Modelos de Lenguaje de Gran Escala (LLMs), su funcionamiento, aplicaciones y el impacto que están teniendo en diversas industrias."
+image: "/images/blog/header.jpg"
 ---
 
 # Cómo funcionan los Modelos de Lenguaje de Gran Escala (LLMs)
