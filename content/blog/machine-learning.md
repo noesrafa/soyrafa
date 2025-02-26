@@ -3,13 +3,13 @@ title: "Cómo funciona el Machine Learning"
 date: "2023-07-15"
 category: "Machine Learning"
 description: "Una exploración detallada de los Modelos de Lenguaje de Gran Escala (LLMs), su funcionamiento, aplicaciones y el impacto que están teniendo en diversas industrias."
-image: "/images/blog/header.jpg"
+image: "/images/blog/header.webp"
 ---
 
 # Cómo funciona el Machine Learning?
 
 ## Introducción
-![Descripción de la imagen](/images/blog/header.jpg)
+![Descripción de la imagen](/images/blog/header.webp)
 Los Modelos de Lenguaje de Gran Escala (Large Language Models o LLMs) representan uno de los avances más significativos en el campo de la Inteligencia Artificial en los últimos años. Estos sistemas, como GPT-4, Claude, Llama y otros, han revolucionado nuestra interacción con la tecnología y están transformando numerosas industrias. En este artículo, exploraremos qué son exactamente los LLMs, cómo funcionan internamente, sus aplicaciones actuales y los desafíos éticos que plantean.
 
 ## ¿Qué son los Modelos de Lenguaje de Gran Escala?
