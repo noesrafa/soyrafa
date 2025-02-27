@@ -5,21 +5,13 @@ import Link from 'next/link';
 import Breadcrumb from '@/components/Blog/Breadcrumb';
 import SearchBar from '@/components/Blog/SearchBar';
 import CategorySelector from '@/components/Blog/CategorySelector';
-import Image from 'next/image';
-
-interface Post {
-  slug: string;
-  title: string;
-  date: string;
-  category: string;
-  description: string;
-  image: string;
-}
+import PostCard from '@/components/Blog/PostCard';
+import { Post } from '@/types/blog';
 
 const BlogPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [posts, setPosts] = useState<Post[]>([]);
+  const [posts, setPosts] = useState<Partial<Post>[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
 
   useEffect(() => {
@@ -34,7 +26,7 @@ const BlogPage = () => {
       
       // Update categories only on initial load
       if (categories.length === 0) {
-        const uniqueCategories = Array.from(new Set(data.map((post: Post) => post.category)));
+        const uniqueCategories = Array.from(new Set(data.map((post: Partial<Post>) => post.category)));
         setCategories(uniqueCategories as string[]);
       }
     };
@@ -59,34 +51,7 @@ const BlogPage = () => {
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {posts.map(post => (
-          <Link 
-            href={`/blog/${post.slug}`} 
-            key={post.slug}
-            className="border border-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-          >
-            {post.image && (
-              <div className="relative w-full h-48">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                />
-              </div>
-            )}
-            <div className="p-6">
-              <div className="flex items-center text-sm text-gray-500 mb-2">
-                <span>{new Date(post.date).toLocaleDateString()}</span>
-                <span className="mx-2">•</span>
-                <span className="bg-gray-100 px-2 py-1 rounded-full">
-                  {post.category}
-                </span>
-              </div>
-              <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-              <p className="text-gray-600">{post.description}</p>
-            </div>
-          </Link>
+          <PostCard key={post.slug} post={post as Post} />
         ))}
       </div>
     </div>

@@ -9,11 +9,37 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Rafael Alexander",
-  description: "Rafael Alexander - Full Stack Product Engineer",
-  icons: {
-    icon: "/favicon.ico",
+  metadataBase: new URL('https://tudominio.com'),
+  title: {
+    default: 'Rafael Alexander',
+    template: '%s | Rafael Alexander'
   },
+  description: 'Rafael Alexander - Full Stack Product Engineer',
+  openGraph: {
+    type: 'website',
+    locale: 'es_ES',
+    url: 'https://soyrafa.com',
+    siteName: 'Rafael Alexander',
+    images: [
+      {
+        url: '/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Rafael Alexander - Full Stack Product Engineer'
+      }
+    ]
+  },
+  twitter: {
+    card: 'summary_large_image',
+    creator: '@tuhandle'
+  },
+  icons: {
+    icon: '/favicon.ico',
+    apple: '/apple-icon.png'
+  },
+  verification: {
+    google: 'tu-codigo-de-verificacion',
+  }
 };
 
 export default function RootLayout({

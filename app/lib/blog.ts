@@ -8,6 +8,7 @@ import rehypeSlug from 'rehype-slug';
 import rehypeStringify from 'rehype-stringify';
 import remarkImages from 'remark-images';
 import rehypeImgSize from 'rehype-img-size';
+import { Post } from '@/types/blog';
 
 export async function getPost(slug: string) {
   try {
@@ -41,11 +42,23 @@ export async function getPost(slug: string) {
   }
 }
 
-export async function getAllPosts() {
+export async function getAllPosts(): Promise<Post[]> {
   const postsDirectory = path.join(process.cwd(), 'content/blog');
   const filenames = fs.readdirSync(postsDirectory);
   
-  return filenames.map(filename => ({
-    slug: filename.replace('.md', ''),
-  }));
+  return filenames.map(filename => {
+    const filePath = path.join(postsDirectory, filename);
+    const fileContents = fs.readFileSync(filePath, 'utf8');
+    const { data, content } = matter(fileContents);
+    
+    return {
+      slug: filename.replace('.md', ''),
+      title: data.title,
+      date: data.date,
+      category: data.category,
+      description: data.description,
+      content: content,
+      image: data.image,
+    };
+  });
 } 

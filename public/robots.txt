@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://soyrafa.com/sitemap.xml
+
+# Rutas a no indexar
+Disallow: /api/*
+Disallow: /admin/* 

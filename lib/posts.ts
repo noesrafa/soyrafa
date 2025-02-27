@@ -17,6 +17,7 @@ export async function getPostsByCategory(category: string) {
       date: data.date,
       category: data.category,
       description: data.description,
+      image: data.image || null,
     };
   });
 
